@@ -1,0 +1,41 @@
+
+*** POM | Unit Test | HTML Reports *** By Automation Step By Step
+
+Pre-Req:
+IDE: PyCharm
+Python Lib - selenium
+     cmd   >> pip install selenium
+HTML test runner
+     cmd    >> pip install html-testRunner
+     cmd    >> pip list
+     cmd    >> pip check selenium (For to check any broken requirements found)
+
+** How to run the test from command prompt
+    1: Copy the path of the Tests folder for ex: C:\Users\chaitanya.mohammad\PycharmProjects\POMFramework_UnitTest_HtmlReports-AutoStepByStep\DemoProject\Tests
+    2: Open command prompt
+    3: Paste the path C:\Users\chaitanya.mohammad\PycharmProjects\POMFramework_UnitTest_HtmlReports-AutoStepByStep\DemoProject\Tests
+    4: And, enter the command as:>>  python -m unittest MainTest.py
+        Note: If you are using the below code for main, then there is command can be give as:>> python MainTest.py
+            if __name__ == '__main()__':
+                unittest.main()
+
+    Note: When you are importing multiple classes / modules in your MainTest like below (Ref 1), the script execution from command prompt will fail like (Ref 2).
+           Then have to add a code like (Ref 3) in MainTest.py and enter the command in command prompt as "python MainTest.py" and if still it doesn't work,
+           follow the Step# 5
+
+            Ref 1:
+            from DemoProject.Pages.loginpage import LoginPage
+            from DemoProject.Pages.homepage import HomePage
+
+            Ref 2:
+            from DemoProject.Pages.loginpage import LoginPage
+            ModuleNotFoundError: No module named 'DemoProject'
+
+            Ref 3:
+            import sys
+            import os
+            sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
+
+    5: In command prompt, go to the parent folder C:\Users\chaitanya.mohammad\PycharmProjects\POMFramework_UnitTest_HtmlReports-AutoStepByStep and enter the command as
+        CMD as >>:  python -m DemoProject.Tests.MainTest
+
